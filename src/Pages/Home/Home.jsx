@@ -31,9 +31,9 @@ export const Home = () => {
                 <div className='w-full p-2'>
                     <Upcomings/>
                 </div>
-                <div className='w-7/12 p-2 '> 
-                    {/* <Message/> */}
-                </div> 
+                {/* <div className='w-7/12 p-2 '> 
+                    <Message/>
+                </div>  */}
             </div>   
         </div>
         <div className='w-1/4 flex-col'>

@@ -128,7 +128,7 @@ function Sidebar() {
       </div>
 
       {/* Footer - Weather and Support */}
-      <div className="space-y-4 mt-64">
+      <div className="space-y-4 mt-32">
         {/* Weather Widget */}
         <Weather/>
         

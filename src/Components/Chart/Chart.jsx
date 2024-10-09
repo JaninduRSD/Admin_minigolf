@@ -25,7 +25,7 @@ const SalesChart = () => {
   return (
     <div className="p-4 rounded-lg shadow-xl bg-white w-full">
       <div className="flex justify-between mb-4">
-        <h2 className="text-lg font-semibold">Sale</h2>
+        <h2 className="text-2xl font-semibold">Sale</h2>
         <select
           value={view}
           onChange={(e) => setView(e.target.value)}

@@ -4,9 +4,8 @@ import axios from "axios";
 const WeatherWidget = () => {
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const API_KEY = "bb03bfddfa9247b4897124634240410";
-  const LOCATION = "Colombo, Sri Lanka"; // Change to dynamic location if needed
-  const WEATHER_API_URL = `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${LOCATION}&days=5`;
 
   const iconMapping = {
     "Clear": "☀️",
@@ -38,27 +37,29 @@ const WeatherWidget = () => {
     "Icy": "❄️",
     "Freezing rain": "🌧️",
     "Blizzard": "❄️",
-    "Partly sunny": "🌤️", // Additional condition
-    "Thundery outbreaks possible": "⛈️", // Additional condition
-    "Isolated thunderstorms": "⛈️", // Additional condition
-    "Patchy rain": "🌦️", // Additional condition
-    "Heavy showers": "🌧️", // Additional condition
-    "Light showers": "🌦️", // Additional condition
-    "Frost": "❄️", // Additional condition
-    "Showers in the vicinity": "🌦️", // Additional condition
-    "Moderate rain": "🌧️", // Additional condition
-    "Heavy drizzle": "🌦️", // Additional condition
-    "Showers with thunder": "⛈️", // Additional condition
+    "Partly sunny": "🌤️",
+    "Thundery outbreaks possible": "⛈️",
+    "Isolated thunderstorms": "⛈️",
+    "Patchy light rain": "🌦️",
+    "Patchy rain": "🌦️",
+    "Heavy showers": "🌧️",
+    "Light showers": "🌦️",
+    "Frost": "❄️",
+    "Showers in the vicinity": "🌦️",
+    "Moderate rain": "🌧️",
+    "Heavy drizzle": "🌦️",
+    "Showers with thunder": "⛈️",
   };
 
   useEffect(() => {
-    const fetchWeather = async () => {
+    const fetchWeather = async (latitude, longitude) => {
       try {
         setLoading(true);
+        const WEATHER_API_URL = `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${latitude},${longitude}&days=5`;
+
         const response = await axios.get(WEATHER_API_URL);
         const weather = response.data;
 
-        // Transform the response into our component's state
         const currentWeather = {
           currentTemp: Math.round(weather.current.temp_c), // Use Celsius and round
           location: weather.location.name, // City name
@@ -74,15 +75,39 @@ const WeatherWidget = () => {
         setLoading(false);
       } catch (error) {
         console.error("Error fetching weather data:", error);
+        setError("Unable to fetch weather data");
         setLoading(false);
       }
     };
 
-    fetchWeather();
+    const getLocation = () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const { latitude, longitude } = position.coords;
+            fetchWeather(latitude, longitude); // Fetch weather using latitude and longitude
+          },
+          (error) => {
+            console.error("Error getting location:", error);
+            setError("Location access denied. Using default location.");
+            fetchWeather("6.9271", "79.8612"); // Default to Colombo coordinates
+          }
+        );
+      } else {
+        setError("Geolocation is not supported by this browser.");
+        fetchWeather("6.9271", "79.8612"); // Default to Colombo coordinates
+      }
+    };
+
+    getLocation();
   }, []);
 
-  if (loading || !weatherData) {
+  if (loading) {
     return <div>Loading weather data...</div>; // Loading state
+  }
+
+  if (error) {
+    return <div>{error}</div>; // Error state
   }
 
   return (
@@ -90,10 +115,14 @@ const WeatherWidget = () => {
       {/* Main Weather Info */}
       <div className="flex justify-between items-center mb-4">
         <div className="flex items-center">
-          <span className="text-6xl">{iconMapping[weatherData.condition] || "❓"}</span>
+          {/* Dynamically render the weather icon */}
+          <span className="text-6xl">
+            {iconMapping[weatherData.condition] || "❓"}
+          </span>
           <div className="ml-3">
             <h2 className="text-3xl font-bold">{weatherData.currentTemp}°C</h2>
             <p className="text-lg">{weatherData.location}</p>
+            <p className="text-sm">{weatherData.condition}</p> {/* Weather condition text */}
           </div>
         </div>
         <button className="text-xl hover:bg-green-700 p-2 rounded-full">⋮</button>
@@ -103,7 +132,9 @@ const WeatherWidget = () => {
       <div className="grid grid-cols-5 gap-2 text-center">
         {weatherData.forecast.map((day, index) => (
           <div key={index}>
-            <span className="block text-xl">{iconMapping[day.condition] || "❓"}</span>
+            <span className="block text-xl">
+              {iconMapping[day.condition] || "❓"}
+            </span>
             <span className="block text-sm">{day.temp}°C</span>
             <span className="block text-sm">{day.day}</span>
           </div>

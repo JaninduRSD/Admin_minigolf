@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import Comment from '../../Components/assets/Comment Icon.png'
-import Edit from '../../Components/assets/Edit Icon.png'
+import Comment from '../../Components/assets/Comment Icon.png';
+import Edit from '../../Components/assets/Edit Icon.png';
+import { Link } from 'react-router-dom'; // Import Link for navigation
 
 const UpcomingEvents = () => {
   const events = [
@@ -13,7 +14,7 @@ const UpcomingEvents = () => {
   const [hoveredRow, setHoveredRow] = useState(null);
 
   return (
-    <div className=" bg-gray-50 min-h-screen w-full">
+    <div className=" w-full">
       <div className="max-w-4xl mx-auto">
         <h2 className="text-2xl font-bold mb-4">Upcoming Events</h2>
         <table className="table-auto w-full bg-white rounded-lg shadow-md">
@@ -60,17 +61,17 @@ const UpcomingEvents = () => {
                   {hoveredRow === event.id ? (
                     <div className="flex space-x-2">
                       <button className="p-2 hover:bg-gray-200 rounded-full">
-                      <img
-                        src={Edit}
-                        alt="Edit"
-                        className="w-5 h-5 rounded-full"
+                        <img
+                          src={Edit}
+                          alt="Edit"
+                          className="w-5 h-5 rounded-full"
                         />
                       </button>
                       <button className="p-2 hover:bg-gray-200 rounded-full">
-                      <img
-                        src={Comment}
-                        alt="Comment"
-                        className="w-5 h-5 rounded-full"
+                        <img
+                          src={Comment}
+                          alt="Comment"
+                          className="w-5 h-5 rounded-full"
                         />
                       </button>
                     </div>
@@ -90,6 +91,17 @@ const UpcomingEvents = () => {
             ))}
           </tbody>
         </table>
+
+        {/* See More button below the table */}
+        <div className="mt-1 flex justify-end">
+          <Link to="/enquiries">
+            <button
+              className=" text-black px-4 py-2 rounded-lg  "
+            >
+              See More...
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );
