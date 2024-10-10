@@ -7,7 +7,7 @@ const messages = [
 
 const MessagesCard = () => {
   return (
-    <div className="bg-color2 bg-opacity-45  pl-4 pr-4 pb-1 rounded-lg shadow-md w-full ">
+    <div className="bg-color2 bg-opacity-45  pl-4 pr-4 pb-1 rounded-2xl shadow-md w-full ">
       <div className="flex justify-between mb-3 pt-2">
         <h2 className="text-3xl font-bold">Messages</h2>
         <button className="text-gray-500">

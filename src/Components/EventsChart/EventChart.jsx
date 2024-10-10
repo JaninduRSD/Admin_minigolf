@@ -2,30 +2,30 @@ import React, { useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts';
 
 const data7Days = [
-  { name: 'Day 1', thisMonth: 10000, lastMonth: 15000 },
-  { name: 'Day 2', thisMonth: 20000, lastMonth: 12000 },
-  { name: 'Day 3', thisMonth: 4509, lastMonth: 18000 },
-  { name: 'Day 4', thisMonth: 15000, lastMonth: 8000 },
-  { name: 'Day 5', thisMonth: 9000, lastMonth: 14000 },
-  { name: 'Day 6', thisMonth: 18000, lastMonth: 11000 },
-  { name: 'Day 7', thisMonth: 23000, lastMonth: 17000 }
+  { name: 'Day 1', thisMonth: 100, lastMonth: 150 },
+  { name: 'Day 2', thisMonth: 200, lastMonth: 120 },
+  { name: 'Day 3', thisMonth: 450, lastMonth: 180 },
+  { name: 'Day 4', thisMonth: 150, lastMonth: 800 },
+  { name: 'Day 5', thisMonth: 900, lastMonth: 140 },
+  { name: 'Day 6', thisMonth: 180, lastMonth: 110 },
+  { name: 'Day 7', thisMonth: 230, lastMonth: 170 }
 ];
 
 const dataMonth = [
-  { name: 'Week 1', thisMonth: 70000, lastMonth: 50000 },
-  { name: 'Week 2', thisMonth: 85000, lastMonth: 65000 },
-  { name: 'Week 3', thisMonth: 75000, lastMonth: 60000 },
-  { name: 'Week 4', thisMonth: 90000, lastMonth: 80000 }
+  { name: 'Week 1', thisMonth: 700, lastMonth: 500 },
+  { name: 'Week 2', thisMonth: 850, lastMonth: 650 },
+  { name: 'Week 3', thisMonth: 750, lastMonth: 600 },
+  { name: 'Week 4', thisMonth: 900, lastMonth: 800 }
 ];
 
-const SalesChart = () => {
+const EventsChart = () => {
   const [view, setView] = useState('7days');
   const chartData = view === '7days' ? data7Days : dataMonth;
 
   return (
-    <div className="p-4 rounded-[30px] shadow-xl bg-white w-full">
+    <div className="p-4 rounded-lg shadow-xl bg-white w-full">
       <div className="flex justify-between mb-4">
-        <h2 className="text-2xl font-semibold">Sale</h2>
+        <h2 className="text-2xl font-semibold">Events</h2>
         <select
           value={view}
           onChange={(e) => setView(e.target.value)}
@@ -65,4 +65,4 @@ const SalesChart = () => {
   );
 };
 
-export default SalesChart;
+export default EventsChart;

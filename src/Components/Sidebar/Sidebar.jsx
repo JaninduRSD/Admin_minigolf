@@ -16,7 +16,7 @@ function Sidebar() {
   const isActive = (path) => location.pathname === path;
 
   return (
-    <div className="bg-lightgreen rounded-2xl h-full w-[262px] flex flex-col justify-between p-4">
+    <div className="bg-lightgreen rounded-2xl h-max-screen min-h-max w-[262px] flex flex-col justify-between p-4">
       {/* Header */}
       <div>
         <div className="flex items-center mb-6 ">
@@ -128,15 +128,9 @@ function Sidebar() {
       </div>
 
       {/* Footer - Weather and Support */}
-      <div className="space-y-4 mt-32">
+      <div className="space-y-4 ">
         {/* Weather Widget */}
         <Weather/>
-        
-
-        {/* Support Button */}
-        <button className="text-gray-600 w-full py-2">
-          Support
-        </button>
       </div>
     </div>
   );

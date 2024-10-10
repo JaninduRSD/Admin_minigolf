@@ -21,7 +21,7 @@ const Timeline = () => {
   });
 
   return (
-    <div className="relative w-[280px] h-[550px] overflow-y-scroll">
+    <div className="relative w-[280px] h-[600px] overflow-y-scroll">
       {/* Timeline labels and horizontal lines */}
       {timeSlots.map((time, index) => (
         <div key={index} className="absolute left-0 w-full flex items-center" style={{ top: `${index * 80}px` }}>

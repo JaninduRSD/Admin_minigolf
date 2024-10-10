@@ -15,9 +15,9 @@ const UpcomingEvents = () => {
 
   return (
     <div className=" w-full">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl mx-auto ">
         <h2 className="text-2xl font-bold mb-4">Upcoming Events</h2>
-        <table className="table-auto w-full bg-white rounded-lg shadow-md">
+        <table className="table-auto w-full bg-white rounded-lg ">
           <thead>
             <tr className="text-left">
               <th className="py-3 px-4">#</th>

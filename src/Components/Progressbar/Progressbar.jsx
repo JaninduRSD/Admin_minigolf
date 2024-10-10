@@ -7,7 +7,7 @@ const GolfSetupCard = () => {
   const percentage = 85;
 
   return (
-    <div className="bg-color1 bg-opacity-45 p-4 rounded-lg shadow-md flex items-center justify-between  ">
+    <div className="bg-color1 bg-opacity-45 p-4 rounded-2xl shadow-md flex items-center justify-between  ">
       <div className='pt-4'>
         <p className="text-gray-600 text-sm pb-2 ">Golf Setups</p>
         <h2 className="text-2xl font-bold mb-2 pb-2">5 Remaining</h2>
