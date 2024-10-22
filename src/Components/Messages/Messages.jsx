@@ -1,4 +1,5 @@
 import React from 'react';
+import massage from '../assets/massages.png'
 
 const messages = [
   { id: 1, name: 'Nicki Savannah', message: 'Hi there! I am Nicki and I needed to know which services do you offer.', count: 2, avatar: 'https://via.placeholder.com/50' },
@@ -20,7 +21,7 @@ const MessagesCard = () => {
         {messages.map((msg) => (
           <div key={msg.id} className="bg-white rounded-lg shadow p-1 pr-3 flex items-center justify-between">
             <div className="flex items-center">
-              <img src={msg.avatar} alt={msg.name} className="w-10 h-10 rounded-full mr-3 ml-3" />
+              <img src={massage} alt='' className="w-11 h-11 rounded-full mr-3 ml-3" />
               <div className='pl-2 py-1 lg:pr-20'>
                 <h4 className="font-semibold text-sm">{msg.name}</h4>
                 <p className="text-gray-500 text-xs">{msg.message}</p>

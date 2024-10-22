@@ -4,6 +4,8 @@ import Sidebar from './Components/Sidebar/Sidebar';
 import Home from './Pages/Home/Home'
 import Enquiries from './Pages/Enquiries/Enquiries'
 import Analytics from './Pages/Analitics/Analitics'
+import Massage from './Pages/Massages/Massage'
+import Inventory from './Pages/Inventory/Inventory'
 
 function App() {
   return (
@@ -19,8 +21,8 @@ function App() {
             <Route path="/home" element={<Home/>} />
             <Route path="/enquiries" element={<Enquiries/>} />
             <Route path="/analytics" element={<Analytics/>} />
-            <Route path="/messages" element={<h1>Messages Page</h1>} />
-            <Route path="/inventory" element={<h1>Inventory Page</h1>} />
+            <Route path="/messages" element={<Massage/>} />
+            <Route path="/inventory" element={<Inventory/>} />
             <Route path="/settings" element={<h1>Settings Page</h1>} />
           </Routes>
         </div>

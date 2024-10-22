@@ -53,11 +53,11 @@ const SalesChart = () => {
       </ResponsiveContainer>
       <div className="flex justify-center mt-4">
         <span className="flex items-center mr-4">
-          <span className="inline-block w-3 h-3 rounded-full bg-blue-500 mr-1"></span>
+          <span className="inline-block w-1 h-1 rounded-full bg-blue-500 mr-1"></span>
           This Month
         </span>
         <span className="flex items-center">
-          <span className="inline-block w-3 h-3 rounded-full bg-pink-500 mr-1"></span>
+          <span className="inline-block w-1 h-1 rounded-full bg-pink-500 mr-1"></span>
           Last Month
         </span>
       </div>

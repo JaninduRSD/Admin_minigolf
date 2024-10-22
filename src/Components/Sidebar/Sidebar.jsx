@@ -18,7 +18,7 @@ function Sidebar() {
   return (
     <div className="bg-lightgreen rounded-2xl h-max-screen min-h-max w-[262px] flex flex-col justify-between p-4">
       {/* Header */}
-      <div>
+      <div className='mb-6'>
         <div className="flex items-center mb-6 ">
           <img
             src={Logo} 
@@ -109,20 +109,7 @@ function Sidebar() {
                 <span>Inventory</span>
               </Link>
             </li>
-            <li>
-              <Link 
-                to="/settings" 
-                className={`flex items-center text-sm space-x-2 py-2 px-4 rounded-lg font-medium ${isActive('/settings') ? 'bg-green1 text-white' : 'text-gray-600'}`}
-              >
-                {/* <span className="material-icons">settings</span> */}
-                <img
-                  src={Settings1} 
-                  alt="Mini Golf Icon"
-                  className="w-6 h-6"
-                />
-                <span>Settings</span>
-              </Link>
-            </li>
+            
           </ul>
         </nav>
       </div>
